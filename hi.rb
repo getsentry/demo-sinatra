@@ -8,11 +8,15 @@ end
 
 use Raven::Rack
 
+before do 
+  Raven.user_context ip_address: request.ip	
+end
+
 get '/hi' do
   "Hello World!"
 end
 
 get '/' do
-	1/0
-	"Error should appear"
+  1/0
+  "Error should appear"
 end
